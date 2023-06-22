@@ -1,0 +1,12 @@
+services:
+  dev_nginx:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - type: bind
+        source: .nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+    profiles: ["dev"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
